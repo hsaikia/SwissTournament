@@ -2,9 +2,9 @@
 A Swiss Tournament Pairing Generator
 
 # How to use
-- Add the player names after a `P` and a newline, one per line.
-- Add the Round results after a `R` and a newline, in the format `<White Player name>:<Black Player name>:<W/B/D>` one per line.
-- If the Tournament does not have any recorded results, you can already generate the pairings for the next round by running
+- To the `input.txt` file, add the player names after a `P` and a newline, one per line.
+- Then add the round results after a `R` and a newline, in the format `<White Player name>:<Black Player name>:<W/B/D>` one per line.
+- If the Tournament does not have any recorded results, you can already generate the pairings for the first round by running
   
   ```python
   python generate.py

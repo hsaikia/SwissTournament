@@ -15,4 +15,4 @@ A Swiss Tournament Pairing Generator
   
 # TODOs and Future Improvements
   - The input and output file names, tournament title and max number of rounds are global variables currently, they can be cmdline parameters instead.
-  - There are currently no tie-breaks between players in the final standings, total score being the only ranking criteria. Ties-breaks between players with equal scores can be implemented by following any of the standard tie-break calculators.
+  - There are currently no tie-breaks between players in the final standings, total score being the only ranking criteria. Tie-breaks between players with equal scores can be implemented by following any of the standard tie-break calculators.

@@ -12,5 +12,5 @@ A Swiss Tournament Pairing Generator
   Open `tournament.md` in any markdown viewer to view the standings, pairings for the next round and the results of the previous rounds.
   
 # TODOs and Future Improvements
-  - The input and output file names, tournament title and max number of rounds are global variables currently, they can be cmdline parameters instead
+  - The input and output file names, tournament title and max number of rounds are global variables currently, they can be cmdline parameters instead.
   - There are currently no tie-breaks between players in the final standings, total score being the only ranking criteria. Ties-breaks between players with equal scores can be implemented by following any of the standard tie-break calculators.

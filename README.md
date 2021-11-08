@@ -1,5 +1,5 @@
 # SwissTournament
-A Swiss Tournament Pairing Generator
+A Swiss Tournament Pairing Generator written for the [2nd Muenchener Kaffeehaus Chess Tournament](https://www.meetup.com/Chess-Munich/events/rqwkqsyccpbgb/).
 
 # How to use
 - To the `input.txt` file, add the player names after a `P` and a newline, one per line.

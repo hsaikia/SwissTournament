@@ -11,7 +11,7 @@ A Swiss Tournament Pairing Generator
   ```
   Open `tournament.md` in any markdown viewer to view the standings, pairings for the next round and the results of the previous rounds.
 - Input the results of the current round by changing the `NP`s to `W` for a white win, `B` for a black win and `D` for a draw. 
-- Run `python generate.py` again to generate the current standings pairings for the next round. Pairings are stopped when the maximum number of rounds is reached.
+- Run `python generate.py` again to generate the current standings and pairings for the next round. Pairing generation is stopped when the maximum number of rounds is reached.
   
 # TODOs and Future Improvements
   - The input and output file names, tournament title and max number of rounds are global variables currently, they can be cmdline parameters instead.

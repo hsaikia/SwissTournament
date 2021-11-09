@@ -1,7 +1,9 @@
+from dataclasses import dataclass
 from typing import List
 
-from swiss_tournament.data.player import Player
+from swiss_tournament.data.result import Result
 
 
+@dataclass
 class RoundPairing:
-    pairing: List[(Player, Player, int)]
+    pairing: List[Result]

@@ -7,7 +7,7 @@ from swiss_tournament.export.tournament_exporter import TournamentExporter, Yaml
 from swiss_tournament.parse.tournament_parser import YamlTournamentParser, TournamentParser
 from swiss_tournament.export.round_exporter import YamlRoundExporter, RoundExporter, MarkdownRoundExporter
 from swiss_tournament.step.round_generator import RoundGenerator
-from swiss_tournament.step.tie_breaker import Bucholz
+from swiss_tournament.step.tie_breaker import Buchholz
 from swiss_tournament.step.tournament_updater import TournamentUpdater
 
 
@@ -35,7 +35,7 @@ class Commands:
 
     def generate_new_round(self, tournament_file: str, output_file: str):
         tournament = self.tournament_parser.parse(tournament_file)
-        standings = self.standings_generator.generate(tournament, [Bucholz()])
+        standings = self.standings_generator.generate(tournament, [Buchholz()])
         new_round = self.round_generator.generate(tournament, standings)
         for exporter in self.round_exporters:
             exporter.export(new_round, output_file)

@@ -3,8 +3,6 @@ from typing import List, Dict
 
 from swiss_tournament.data.player import Player
 from swiss_tournament.data.tournament import Tournament
-from functools import reduce
-
 from swiss_tournament.step.helper_mappings import player_points_map, player_round_map
 
 

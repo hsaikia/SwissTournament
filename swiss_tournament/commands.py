@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Optional
 
 from swiss_tournament.parse.round_parser import RoundParser, YamlRoundParser
 from swiss_tournament.export.standings_exporter import MarkdownStandingsExporter, StandingsExporter
@@ -40,14 +40,14 @@ class Commands:
         for exporter in self.round_exporters:
             exporter.export(new_round, output_file)
 
-    def process_results(self, tournament_file: str, round_file: str):
+    def process_results(self, tournament_file: str, round_file: str, new_tournament_file: Optional[str] = None):
         tournament = self.tournament_parser.parse(tournament_file)
         round_results = self.round_parser.parse(round_file)
         self.tournament_updater.update(tournament, round_results)
         for exporter in self.tournament_exporters:
-            exporter.export(tournament, tournament_file)
+            exporter.export(tournament, new_tournament_file or tournament_file)
 
-    def generate_standings(self, tournament_file: str, output_file: str, tie_breakers=None):
+    def generate_standings(self, tournament_file: str, output_file: str, tie_breakers: List[str] = None):
         if tie_breakers is None:
             tie_breakers = self.DEFAULT_TIE_BREAKERS
         tournament = self.tournament_parser.parse(tournament_file)

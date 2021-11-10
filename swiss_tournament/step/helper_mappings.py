@@ -11,7 +11,7 @@ def player_round_map(tournament: Tournament) -> Dict[Player, List[tuple[Player, 
         mapping[player] = []
     mapping[BYE] = []
     for rnd in tournament.rounds:
-        for result in rnd:
+        for result in rnd.pairing:
             white = mapping[result.white]
             white.append((result.black, result.result))
             mapping[result.white] = white
@@ -30,7 +30,7 @@ def player_points_map(tournament: Tournament) -> Dict[Player, float]:
         mapping[player] = 0
     mapping[BYE] = 0
     for rnd in tournament.rounds:
-        for result in rnd:
+        for result in rnd.pairing:
             mapping[result.white] = mapping[result.white] + result.result
             mapping[result.black] = mapping[result.black] + 1 - result.result
 

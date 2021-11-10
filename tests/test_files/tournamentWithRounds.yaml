@@ -1,0 +1,27 @@
+players:
+- alice
+- bob
+- charlie
+- dave
+rounds:
+  Round 1:
+  - w: alice
+    b: bob
+    r: 0
+  - w: charlie
+    b: dave
+    r: 1
+  Round 2:
+  - w: charlie
+    b: alice
+    r: 1
+  - w: dave
+    b: bob
+    r: 0.5
+  Round 3:
+  - w: alice
+    b: dave
+    r: 1
+  - w: bob
+    b: charlie
+    r: 0.5

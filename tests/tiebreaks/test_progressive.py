@@ -2,6 +2,7 @@ import unittest
 
 from swiss_tournament.data.player import Player
 from swiss_tournament.data.result import Result
+from swiss_tournament.data.round_pairing import RoundPairing
 from swiss_tournament.data.tournament import Tournament
 from swiss_tournament.step.tie_breaker import Progressive
 
@@ -22,9 +23,9 @@ class ProgressiveTestCase(unittest.TestCase):
                     Player("bob")
                 ],
                 rounds=[
-                    [
+                    RoundPairing("Round 1", [
                         Result(Player("alice"), Player("bob"), 1)
-                    ]
+                    ])
                 ]
             )
         )
@@ -41,14 +42,14 @@ class ProgressiveTestCase(unittest.TestCase):
                     Player("dave")
                 ],
                 rounds=[
-                    [
+                    RoundPairing("Round 1", [
                         Result(Player("alice"), Player("bob"), 1),
                         Result(Player("charlie"), Player("dave"), 0.5)
-                    ],
-                    [
+                    ]),
+                    RoundPairing("Round 2", [
                         Result(Player("charlie"), Player("alice"), 1),
                         Result(Player("dave"), Player("bob"), 0.5)
-                    ]
+                    ])
                 ]
             )
         )
@@ -65,18 +66,18 @@ class ProgressiveTestCase(unittest.TestCase):
                     Player("dave")
                 ],
                 rounds=[
-                    [
+                    RoundPairing("Round 1", [
                         Result(Player("alice"), Player("bob"), 0),
                         Result(Player("charlie"), Player("dave"), 1)
-                    ],
-                    [
+                    ]),
+                    RoundPairing("Round 2", [
                         Result(Player("charlie"), Player("alice"), 1),
                         Result(Player("dave"), Player("bob"), 0.5)
-                    ],
-                    [
+                    ]),
+                    RoundPairing("Round 3", [
                         Result(Player("alice"), Player("dave"), 1),
                         Result(Player("bob"), Player("charlie"), 0.5)
-                    ]
+                    ])
                 ]
             )
         )

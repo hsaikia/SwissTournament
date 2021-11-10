@@ -40,7 +40,13 @@ class MedianBuchholz(TieBreaker):
 
 class Progressive(TieBreaker):
     def get(self, player: Player, tournament: Tournament) -> float:
-        pass
+        player_rounds = player_round_map(tournament)[player]
+        round_count = len(player_rounds)
+        result = 0
+        for i in range(0, round_count):
+            round_result = player_rounds[i][1]
+            result += round_result * (round_count - i)
+        return result
 
 
 class BuchholzMinus1(TieBreaker):

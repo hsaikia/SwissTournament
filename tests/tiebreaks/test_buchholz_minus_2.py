@@ -1,6 +1,6 @@
 import unittest
 
-from swiss_tournament.data.player import Player
+from swiss_tournament.data.player import Player, BYE
 from swiss_tournament.data.result import Result
 from swiss_tournament.data.tournament import Tournament
 from swiss_tournament.step.tie_breaker import BuchholzMinus2
@@ -81,3 +81,59 @@ class BuchholzMinus2TestCase(unittest.TestCase):
             )
         )
         self.assertEqual(2.5, result)
+
+    def test_with_bye_on_player(self):
+        result = self.unit.get(
+            player=Player("bob"),
+            tournament=Tournament(
+                players=[
+                    Player("alice"),
+                    Player("bob"),
+                    Player("charlie"),
+                    Player("dave")
+                ],
+                rounds=[
+                    [
+                        Result(Player("alice"), Player("bob"), 1),
+                        Result(Player("charlie"), Player("dave"), 0.5)
+                    ],
+                    [
+                        Result(Player("charlie"), Player("alice"), 1),
+                        Result(Player("bob"), BYE, 0.5)
+                    ],
+                    [
+                        Result(Player("alice"), Player("dave"), 1),
+                        Result(Player("bob"), Player("dave"), 0.5)
+                    ]
+                ]
+            )
+        )
+        self.assertEqual(2, result)
+
+    def test_with_bye_on_opponent(self):
+        result = self.unit.get(
+            player=Player("bob"),
+            tournament=Tournament(
+                players=[
+                    Player("alice"),
+                    Player("bob"),
+                    Player("charlie"),
+                    Player("dave")
+                ],
+                rounds=[
+                    [
+                        Result(Player("alice"), Player("bob"), 1),
+                        Result(Player("charlie"), Player("dave"), 0.5)
+                    ],
+                    [
+                        Result(Player("alice"), BYE, 1),
+                        Result(Player("bob"), Player("charlie"), 0.5)
+                    ],
+                    [
+                        Result(Player("alice"), Player("charlie"), 1),
+                        Result(Player("bob"), Player("dave"), 0.5)
+                    ]
+                ]
+            )
+        )
+        self.assertEqual(3, result)

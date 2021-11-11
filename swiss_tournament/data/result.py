@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from swiss_tournament.data.player import Player
 
@@ -7,4 +8,4 @@ from swiss_tournament.data.player import Player
 class Result:
     white: Player
     black: Player
-    result: float
+    result: Optional[float]

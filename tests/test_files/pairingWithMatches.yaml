@@ -1,0 +1,7 @@
+Round 1:
+- w: alice
+  b: bob
+  r: null
+- w: charlie
+  b: dave
+  r: 0.5

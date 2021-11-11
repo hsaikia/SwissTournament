@@ -14,6 +14,19 @@ class TieBreaker(ABC):
     def get(self, player: Player, tournament: Tournament) -> float:
         pass
 
+    def name(self) -> str:
+        pass
+
+
+def player_tie_breakers_map(tournament: Tournament, tie_breakers: List[TieBreaker]) -> Dict[Player, List[float]]:
+    mapping = {}
+    for player in tournament.players:
+        results = []
+        for tie_breaker in tie_breakers:
+            results.append(tie_breaker.get(player, tournament))
+        mapping[player] = results
+    return mapping
+
 
 class Buchholz(TieBreaker):
     def get(self, player: Player, tournament: Tournament) -> float:
@@ -22,6 +35,9 @@ class Buchholz(TieBreaker):
         opponent_points = _opponent_points(player_rounds, points)
         result = sum(opponent_points)
         return result
+
+    def name(self):
+        return "Buchholz"
 
 
 class MedianBuchholz(TieBreaker):
@@ -37,6 +53,9 @@ class MedianBuchholz(TieBreaker):
         result = sum(filtered_points)
         return result
 
+    def name(self):
+        return "Buchholz M"
+
 
 class Progressive(TieBreaker):
     def get(self, player: Player, tournament: Tournament) -> float:
@@ -47,6 +66,9 @@ class Progressive(TieBreaker):
             round_result = player_rounds[i][1]
             result += round_result * (round_count - i)
         return result
+
+    def name(self):
+        return "Progressive"
 
 
 class BuchholzMinus1(TieBreaker):
@@ -61,6 +83,9 @@ class BuchholzMinus1(TieBreaker):
         result = sum(filtered_points)
         return result
 
+    def name(self):
+        return "Buchholz -1"
+
 
 class BuchholzMinus2(TieBreaker):
     def get(self, player: Player, tournament: Tournament) -> float:
@@ -74,3 +99,6 @@ class BuchholzMinus2(TieBreaker):
         filtered_points.pop()
         result = sum(filtered_points)
         return result
+
+    def name(self):
+        return "Buchholz -2"

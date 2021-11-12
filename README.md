@@ -11,7 +11,12 @@ pip install -r requirements.txt
 ```
 python swiss_tournament.py
 ```
-
+## Test that everything is working as expected
+- Run all tests from the project
+```
+pytest
+```
+NOTE: Tests will try to generate files under directory `/tmp/`
 ## Help for each command
 - How to generate a tournament
 ```
@@ -55,10 +60,13 @@ python swiss_tournament.py process_results ~/3_kaffeehaus_chess_tournament/tourn
 ```
 python swiss_tournament.py generate_standings ~/3_kaffeehaus_chess_tournament/tournament ~/3_kaffeehaus_chess_tournament/standings_round_1
 ```
-10. Repeat steps from 5 to 10 for each new round, changing the files for the rounds accordingly
+10. Repeat steps from 5 to 10 for each new round, changing the files for the rounds accordingly. 
+When there is no possibility to generate a new round because of repeating pairings, the system will
+generate an empty pairing
   
 ## TODOs and Future Improvements
 - Improve pairing method to use [Dutch pairing system](https://en.wikipedia.org/wiki/Swiss-system_tournament#Dutch_system)
 - Create a tournament config file to avoid typing the tournament file every command
 - Add tournament name to tournament file
 - Create a markdown exporter for the tournament to have a final global report
+- Create cleaner and safer tests by not writing to `/tmp/`

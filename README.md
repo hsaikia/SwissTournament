@@ -51,7 +51,10 @@ python swiss_tournament.py generate_standings ~/3_kaffeehaus_chess_tournament/to
 python swiss_tournament.py generate_new_round ~/3_kaffeehaus_chess_tournament/tournament "Round 1"  ~/3_kaffeehaus_chess_tournament/round_1
 ```
 6. Look at your new round! (markdown format): `~/3_kaffeehaus_chess_tournament/round_1.md`
-7. Update the round with the results, by modifying the result in the file (yaml format): ``~/3_kaffeehaus_chess_tournament/round_1.yaml``
+7. Update the round with the results, by modifying the result in the file (yaml format): `~/3_kaffeehaus_chess_tournament/round_1.yaml`
+- Use 1 for White wins
+- Use 0 for Black wins
+- Use 0.5 for Tie
 8. Introduce the results of the last round into your tournament
 ```
 python swiss_tournament.py process_results ~/3_kaffeehaus_chess_tournament/tournament ~/3_kaffeehaus_chess_tournament/round_1

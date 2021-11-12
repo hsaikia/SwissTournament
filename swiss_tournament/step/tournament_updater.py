@@ -4,4 +4,4 @@ from swiss_tournament.data.tournament import Tournament
 
 class TournamentUpdater:
     def update(self, tournament: Tournament, round_pairing: RoundPairing):
-        pass
+        tournament.rounds.append(round_pairing)

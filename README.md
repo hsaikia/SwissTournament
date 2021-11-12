@@ -1,18 +1,64 @@
 # SwissTournament
-A Swiss Tournament Pairing Generator written for the [2nd Muenchener Kaffeehaus Chess Tournament](https://www.meetup.com/Chess-Munich/events/rqwkqsyccpbgb/).
+A Swiss Tournament Pairing Generator written for the [3rd Muenchener Kaffeehaus Chess Tournament](https://www.meetup.com/Chess-Munich/events/svkrqsyccqbdb/).
 
-# How to use
-- To the `input.txt` file, add the player names after a `P` and a newline, one per line.
-- Then add the round results after a `R` and a newline, in the format `<White Player name>:<Black Player name>:<W/B/D>` one per line.
-- If the Tournament does not have any recorded results, you can already generate the pairings for the first round by running
+## Pre-requirements
+- Install dependencies to your environment 
+```
+pip install -r requirements.txt
+```
+## How to use
+- Execute the cli to display the help with the usage
+```
+python swiss_tournament.py
+```
+
+## Help for each command
+- How to generate a tournament
+```
+python swiss_tournament.py create-tournament --help
+```
+- How to generate standings from the current tournament state
+```
+python swiss_tournament.py generate_standings --help
+```
+- How to generate new round from the current tournament state
+```
+python swiss_tournament.py generate_new_round --help
+```
+- How to update the current tournament state from an existing round pairing with results
+```
+python swiss_tournament.py process_results --help
+```
+
+## Example of usage in a tournament
+1. Create a new tournament 
+```
+python swiss_tournament.py create-tournament ~/3_kaffeehaus_chess_tournament/tournament
+```
+2. Edit your players manually with a text editor in the file (yaml format): `~/3_kaffeehaus_chess_tournament/tournament.yaml`
+3. Generate the initial standings 
+```
+python swiss_tournament.py generate_standings ~/3_kaffeehaus_chess_tournament/tournament ~/3_kaffeehaus_chess_tournament/standings_initial
+```
+4. Look at your standings! (markdown format): `~/3_kaffeehaus_chess_tournament/standings_initial.md`
+5. Generate the pairing for the first round
+```
+python swiss_tournament.py generate_new_round ~/3_kaffeehaus_chess_tournament/tournament "Round 1"  ~/3_kaffeehaus_chess_tournament/round_1
+```
+6. Look at your new round! (markdown format): `~/3_kaffeehaus_chess_tournament/round_1.md`
+7. Update the round with the results, by modifying the result in the file (yaml format): ``~/3_kaffeehaus_chess_tournament/round_1.yaml``
+8. Introduce the results of the last round into your tournament
+```
+python swiss_tournament.py process_results ~/3_kaffeehaus_chess_tournament/tournament ~/3_kaffeehaus_chess_tournament/round_1
+```
+9. Generate the standings after round 1 
+```
+python swiss_tournament.py generate_standings ~/3_kaffeehaus_chess_tournament/tournament ~/3_kaffeehaus_chess_tournament/standings_round_1
+```
+10. Repeat steps from 5 to 10 for each new round, changing the files for the rounds accordingly
   
-  ```python
-  python generate.py
-  ```
-  Open `tournament.md` in any markdown viewer to view the standings, pairings for the next round and the results of the previous rounds.
-- Input the results of the current round by changing the `NP`s to `W` for a white win, `B` for a black win and `D` for a draw. 
-- Run `python generate.py` again to generate the current standings and pairings for the next round. Pairing generation is stopped when the maximum number of rounds is reached.
-  
-# TODOs and Future Improvements
-  - The input and output file names, tournament title and max number of rounds are global variables currently, they can be cmdline parameters instead.
-  - There are currently no tie-breaks between players in the final standings, total score being the only ranking criteria. Tie-breaks between players with equal scores can be implemented by following any of the standard tie-break calculators.
+## TODOs and Future Improvements
+- Improve pairing method to use [Dutch pairing system](https://en.wikipedia.org/wiki/Swiss-system_tournament#Dutch_system)
+- Create a tournament config file to avoid typing the tournament file every command
+- Add tournament name to tournament file
+- Create a markdown exporter for the tournament to have a final global report

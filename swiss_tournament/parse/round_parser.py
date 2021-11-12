@@ -11,7 +11,7 @@ class RoundParser(ABC):
         pass
 
 
-class YamlRoundParser(ABC):
+class YamlRoundParser(RoundParser):
     def parse(self, file_name: str) -> RoundPairing:
         with open(f"{file_name}.yaml", "r") as stream:
             document = yaml.load(stream, Loader=yaml.Loader)

@@ -8,7 +8,7 @@ class StandingsExporter(ABC):
         pass
 
 
-class MarkdownStandingsExporter(ABC):
+class MarkdownStandingsExporter(StandingsExporter):
     def export(self, standings: Standings, file_name: str):
         with open(f'{file_name}.md', 'w') as outfile:
             outfile.write(f"\n## Standings after {standings.round}\n")

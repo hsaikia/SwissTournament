@@ -7,7 +7,7 @@ from swiss_tournament.step.helper_mappings import player_points_map, player_roun
 
 
 def _opponent_points(player_rounds: List[tuple[Player, float]], points_map: Dict[Player, float]) -> List[float]:
-    return list(map(lambda res: points_map[res[0]], player_rounds))
+    return list(map(lambda res: points_map.get(res[0]) or 0, player_rounds))
 
 
 class TieBreaker(ABC):

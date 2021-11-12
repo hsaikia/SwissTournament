@@ -68,7 +68,7 @@ When there is no possibility to generate a new round because of repeating pairin
 generate an empty pairing
   
 ## TODOs and Future Improvements
-- Improve pairing method to use [Dutch pairing system](https://en.wikipedia.org/wiki/Swiss-system_tournament#Dutch_system)
+- Improve pairing method by using [Dutch pairing system](https://en.wikipedia.org/wiki/Swiss-system_tournament#Dutch_system)
 - Create a tournament config file to avoid typing the tournament file every command
 - Add tournament name to tournament file
 - Create a markdown exporter for the tournament to have a final global report

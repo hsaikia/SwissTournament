@@ -27,7 +27,7 @@ class MarkdownStandingsExporterTestCase(unittest.TestCase):
         file_name = "/tmp/StandingsWithTieBreakers"
         standings = Standings(round="Round 1", tie_breakers=[
             "Buchholz",
-            "Progressive"
+            "Cumulative"
         ], standings=[
             PlayerStanding(Player("Alice"), 2, [2, 3]),
             PlayerStanding(Player("Bob"), 1, [3, 2]),

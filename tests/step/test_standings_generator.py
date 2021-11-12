@@ -7,7 +7,7 @@ from swiss_tournament.data.round_pairing import RoundPairing
 from swiss_tournament.data.standings import Standings
 from swiss_tournament.data.tournament import Tournament
 from swiss_tournament.step.standings_generator import StandingsGenerator
-from swiss_tournament.step.tie_breaker import Progressive, Buchholz
+from swiss_tournament.step.tie_breaker import Cumulative, Buchholz
 
 
 class StandingsGeneratorTestCase(unittest.TestCase):
@@ -93,11 +93,11 @@ class StandingsGeneratorTestCase(unittest.TestCase):
                 ])
             ]
         )
-        standings = self.unit.generate(tournament, [Progressive()])
+        standings = self.unit.generate(tournament, [Cumulative()])
         self.assertEqual(
             Standings(
                 "Round 3",
-                ["Progressive"],
+                ["Cumulative"],
                 [
                     PlayerStanding(Player("bob"), 2, [4.5]),
                     PlayerStanding(Player("alice"), 2, [3]),
@@ -129,11 +129,11 @@ class StandingsGeneratorTestCase(unittest.TestCase):
                 ])
             ]
         )
-        standings = self.unit.generate(tournament, [Buchholz(), Progressive()])
+        standings = self.unit.generate(tournament, [Buchholz(), Cumulative()])
         self.assertEqual(
             Standings(
                 "Round 3",
-                ["Buchholz", "Progressive"],
+                ["Buchholz", "Cumulative"],
                 [
                     PlayerStanding(Player("bob"), 2, [4, 4.5]),
                     PlayerStanding(Player("alice"), 2, [4, 3]),
@@ -161,11 +161,11 @@ class StandingsGeneratorTestCase(unittest.TestCase):
                 ])
             ]
         )
-        standings = self.unit.generate(tournament, [Buchholz(), Progressive()])
+        standings = self.unit.generate(tournament, [Buchholz(), Cumulative()])
         self.assertEqual(
             Standings(
                 "Round 2",
-                ["Buchholz", "Progressive"],
+                ["Buchholz", "Cumulative"],
                 [
                     PlayerStanding(Player("bob"), 1.5, [1.5, 2.5]),
                     PlayerStanding(Player("alice"), 1, [2.5, 1]),
@@ -174,7 +174,7 @@ class StandingsGeneratorTestCase(unittest.TestCase):
                 ]
             ), standings)
 
-    def test_generate_standings_with_two_tie_breaker_where_first_decides_being_progressive(self):
+    def test_generate_standings_with_two_tie_breaker_where_first_decides_being_cumulative(self):
         tournament = Tournament(
             players=[
                 Player("alice"),
@@ -193,11 +193,11 @@ class StandingsGeneratorTestCase(unittest.TestCase):
                 ])
             ]
         )
-        standings = self.unit.generate(tournament, [Progressive(), Buchholz()])
+        standings = self.unit.generate(tournament, [Cumulative(), Buchholz()])
         self.assertEqual(
             Standings(
                 "Round 2",
-                ["Progressive", "Buchholz"],
+                ["Cumulative", "Buchholz"],
                 [
                     PlayerStanding(Player("bob"), 1.5, [2.5, 1.5]),
                     PlayerStanding(Player("charlie"), 1, [2, 1.5]),

@@ -4,11 +4,11 @@ from swiss_tournament.data.player import Player
 from swiss_tournament.data.result import Result
 from swiss_tournament.data.round_pairing import RoundPairing
 from swiss_tournament.data.tournament import Tournament
-from swiss_tournament.step.tie_breaker import Progressive
+from swiss_tournament.step.tie_breaker import Cumulative
 
 
-class ProgressiveTestCase(unittest.TestCase):
-    unit = Progressive()
+class CumulativeTestCase(unittest.TestCase):
+    unit = Cumulative()
 
     def test_without_rounds(self):
         result = self.unit.get(Player("alice"), Tournament([Player("alice")], []))

@@ -57,7 +57,7 @@ class MedianBuchholz(TieBreaker):
         return "Buchholz M"
 
 
-class Progressive(TieBreaker):
+class Cumulative(TieBreaker):
     def get(self, player: Player, tournament: Tournament) -> float:
         player_rounds = player_round_map(tournament)[player]
         round_count = len(player_rounds)
@@ -68,7 +68,7 @@ class Progressive(TieBreaker):
         return result
 
     def name(self):
-        return "Progressive"
+        return "Cumulative"
 
 
 class BuchholzMinus1(TieBreaker):

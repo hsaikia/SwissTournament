@@ -23,7 +23,7 @@ def _get_class(kls: str):
     return m
 
 
-DEFAULT_TIE_BREAKERS = ["Buchholz", "MedianBuchholz", "Progressive"]
+DEFAULT_TIE_BREAKERS = ["Buchholz", "MedianBuchholz", "Cumulative"]
 tournament_parser: TournamentParser = YamlTournamentParser()
 round_parser: RoundParser = YamlRoundParser()
 
@@ -69,7 +69,7 @@ class Commands:
 
         :param tournament_file: Tournament file to update (without extension). Example: my_tournament_after_round_1
         :param output_file: Output file for standings (without extension). Example: standings_after_round_1
-        :param tie_breakers: Tie breakers to use in order. Example [Buchholz, Progressive, BuchholzMinus1, BuchholzMinus2, MedianBuchholz]
+        :param tie_breakers: Tie breakers to use in order. Example [Buchholz, Cumulative, BuchholzMinus1, BuchholzMinus2, MedianBuchholz]
         """
         if tie_breakers is None:
             tie_breakers = DEFAULT_TIE_BREAKERS

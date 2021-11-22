@@ -5,23 +5,23 @@ players:
 - dave
 rounds:
   Round 1:
-  - w: alice
-    b: bob
-    r: 0
-  - w: charlie
-    b: dave
-    r: 1
+  - white-player: alice
+    black-player: bob
+    result: 0
+  - white-player: charlie
+    black-player: dave
+    result: 1
   Round 2:
-  - w: charlie
-    b: alice
-    r: 1
-  - w: dave
-    b: bob
-    r: 0.5
+  - white-player: charlie
+    black-player: alice
+    result: 1
+  - white-player: dave
+    black-player: bob
+    result: 0.5
   Round 3:
-  - w: alice
-    b: dave
-    r: 1
-  - w: bob
-    b: charlie
-    r: 0.5
+  - white-player: alice
+    black-player: dave
+    result: 1
+  - white-player: bob
+    black-player: charlie
+    result: 0.5

@@ -57,10 +57,10 @@ class RoundGenerator:
                 if a != b:
                     graph.add_edge(a, b, weight=RoundGenerator.pairing_cost(a, b, player_scores, player_colors))
 
-        # Eliminate the option to repeat pairings
+        # Make harder to repeat pairings
         for played_round in tournament.rounds:
             for result in played_round.pairing:
-                graph.remove_edge(result.white, result.black)
+                graph.add_edge(result.white, result.black, weight=NEG_INF)
 
         return graph
 

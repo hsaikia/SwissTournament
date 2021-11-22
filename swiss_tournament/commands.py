@@ -23,7 +23,7 @@ def _get_class(kls: str):
     return m
 
 
-DEFAULT_TIE_BREAKERS = ["Buchholz", "MedianBuchholz", "Cumulative"]
+DEFAULT_TIE_BREAKERS = []
 tournament_parser: TournamentParser = YamlTournamentParser()
 round_parser: RoundParser = YamlRoundParser()
 

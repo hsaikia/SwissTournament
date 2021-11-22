@@ -16,7 +16,7 @@ class DictToRoundPairing:
             rnd = []
             pairing = document[round_name]
             for result in pairing:
-                rnd.append(Result(Player(result['w']), Player(result['b']), result['r']))
+                rnd.append(Result(Player(result['white-player']), Player(result['black-player']), result['result']))
             rounds.append(RoundPairing(round_name, rnd))
         return rounds
 

@@ -24,9 +24,9 @@ class PairingToDict:
         pairings = []
         for result in pairing.pairing:
             res_dict = {
-                'w': result.white.name,
-                'b': result.black.name,
-                'r': result.result
+                'white-player': result.white.name,
+                'black-player': result.black.name,
+                'result': result.result
             }
             pairings.append(res_dict)
         return {pairing.name: pairings}

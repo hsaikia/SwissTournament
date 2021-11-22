@@ -1,7 +1,7 @@
 Round 1:
-- w: alice
-  b: bob
-  r: null
-- w: charlie
-  b: dave
-  r: 0.5
+- white-player: alice
+  black-player: bob
+  result: null
+- white-player: charlie
+  black-player: dave
+  result: 0.5

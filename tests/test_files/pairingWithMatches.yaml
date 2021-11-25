@@ -1,0 +1,7 @@
+Round 1:
+- white-player: alice
+  black-player: bob
+  result: null
+- white-player: charlie
+  black-player: dave
+  result: 0.5
